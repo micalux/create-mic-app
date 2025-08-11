@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Standard Next.js stack boilerplate (App Router, Tailwind, shadcn/ui, Firebase Auth, Drizzle + Supabase, Zod, Vitest, Playwright).",
   "private": true,
+  "bin": {
+    "create-mic-app": "./bin/cli.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -35,7 +38,10 @@
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "autoprefixer": "^10.4.20",
+    "chalk": "^5.3.0",
     "clsx": "^2.1.1",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
     "firebase": "^10.12.5",
     "firebase-admin": "^12.5.0",
     "lucide-react": "^0.453.0",

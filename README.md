@@ -33,6 +33,21 @@ Standard Next.js stack boilerplate per `SPECS.md`.
 - `pnpm e2e`
 - `pnpm drizzle:generate`
 
+## CLI Usage
+Use the CLI to scaffold a new project from this template (similar to `create-volo-app` but with this stack):
+
+```bash
+npx create-mic-app my-app
+cd my-app
+pnpm install
+pnpm dev
+```
+
+Options (parity-oriented):
+- `--fast` — minimal prompts, smart defaults
+- `--status` — print basic template status
+- `--connect`, `--auth`, `--database` — reserved flags for parity; not required for this template (configure env vars instead)
+
 ## Env Vars (names only)
 - `NEXT_PUBLIC_FIREBASE_API_KEY`
 - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
