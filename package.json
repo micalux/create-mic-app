@@ -1,75 +1,77 @@
 {
-  "name": "create-volo-app",
-  "version": "0.3.1",
-  "description": "CLI tool to create AI-ready full-stack apps with an integrated React frontend, Hono backend, Auth, and Postgres database.",
-  "type": "module",
-  "bin": {
-    "create-volo-app": "./bin/cli.js"
-  },
-  "main": "./dist/index.js",
-  "files": [
-    "bin/",
-    "dist/"
-  ],
+  "name": "create-mic-app",
+  "version": "1.0.0",
+  "description": "Standard Next.js stack boilerplate (App Router, Tailwind, shadcn/ui, Firebase Auth, Drizzle + Supabase, Zod, Vitest, Playwright).",
+  "private": true,
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx src/index.ts",
-    "test": "node bin/cli.js test-app",
-    "verify": "node test/verify-setup.js",
-    "test:docker": "./test/docker/test-docker.sh",
-    "prepublishOnly": "npm run build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "drizzle:generate": "drizzle-kit generate",
+    "prepare": "husky install"
   },
   "keywords": [
-    "volo-app",
-    "react",
-    "hono",
+    "nextjs",
+    "tailwind",
+    "shadcn",
     "firebase",
-    "neon",
-    "cloudflare",
-    "full-stack",
-    "template",
-    "cli",
-    "create-app"
+    "drizzle",
+    "supabase",
+    "zod",
+    "vitest",
+    "playwright"
   ],
-  "author": "VoloBuilds",
   "license": "MIT",
   "engines": {
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "cli-progress": "^3.12.0",
-    "commander": "^11.1.0",
-    "dotenv": "^16.3.1",
-    "execa": "^8.0.1",
-    "fs-extra": "^11.1.1",
-    "inquirer": "^9.2.11",
-    "neonctl": "^2.9.2",
-    "node-fetch": "^3.3.2",
-    "open": "^10.0.0",
-    "ora": "^7.0.1",
-    "semver": "^7.5.4",
-    "simple-git": "^3.20.0",
-    "tar": "^7.4.3",
-    "which": "^4.0.0"
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
+    "firebase": "^10.12.5",
+    "firebase-admin": "^12.5.0",
+    "lucide-react": "^0.453.0",
+    "next": "14.2.5",
+    "postcss": "^8.4.41",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "^7.52.1",
+    "sonner": "^1.5.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.10",
+    "zod": "^3.23.8",
+    "drizzle-orm": "^0.33.0",
+    "pg": "^8.12.0"
   },
   "devDependencies": {
-    "@types/cli-progress": "^3.11.5",
-    "@types/fs-extra": "^11.0.4",
-    "@types/inquirer": "^9.0.7",
-    "@types/node": "^20.8.0",
-    "@types/semver": "^7.5.4",
-    "@types/tar": "^6.1.13",
-    "@types/which": "^3.0.3",
-    "tsx": "^4.7.0",
-    "typescript": "^5.2.2"
+    "@playwright/test": "^1.46.0",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "drizzle-kit": "^0.25.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VoloBuilds/create-volo-app.git"
-  },
-  "bugs": {
-    "url": "https://github.com/VoloBuilds/create-volo-app/issues"
-  },
-  "homepage": "https://github.com/VoloBuilds/create-volo-app#readme"
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  }
 }

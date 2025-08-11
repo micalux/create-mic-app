@@ -1,0 +1,6 @@
+node_modules
+.drizzle
+.next
+dist
+coverage
+drizzle
