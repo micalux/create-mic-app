@@ -52,6 +52,28 @@ async function updatePackageName(targetDir, projectName) {
   await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2));
 }
 
+async function fixTsconfigPaths(targetDir) {
+  const tsconfigPath = path.join(targetDir, 'tsconfig.json');
+  if (!(await fs.pathExists(tsconfigPath))) return;
+  try {
+    const ts = JSON.parse(await fs.readFile(tsconfigPath, 'utf-8'));
+    ts.compilerOptions = ts.compilerOptions || {};
+    ts.compilerOptions.baseUrl = ts.compilerOptions.baseUrl || '.';
+    ts.compilerOptions.paths = ts.compilerOptions.paths || {};
+    const paths = ts.compilerOptions.paths;
+    // Ensure components alias points to the correct folder at project root
+    if (paths['@/components/*'] && Array.isArray(paths['@/components/*'])) {
+      paths['@/components/*'] = ['components/*'];
+    } else {
+      paths['@/components/*'] = ['components/*'];
+    }
+    // Preserve other aliases if present
+    await fs.writeFile(tsconfigPath, JSON.stringify(ts, null, 2));
+  } catch {
+    // no-op on parse error
+  }
+}
+
 async function createApp(projectName, options) {
   const targetDir = path.resolve(process.cwd(), projectName || '.');
   const exists = await fs.pathExists(targetDir);
@@ -60,14 +82,20 @@ async function createApp(projectName, options) {
   console.log(chalk.cyan.bold('🚀 Creating project...'));
   await copyTemplate(targetDir);
   await updatePackageName(targetDir, projectName || path.basename(targetDir));
+  await fixTsconfigPaths(targetDir);
 
   console.log('');
   console.log(chalk.green('✔ Project files created at:'), targetDir);
   console.log('');
   console.log('Next steps:');
   console.log(`  cd ${projectName === '.' ? path.basename(targetDir) : projectName}`);
+  console.log('  # with pnpm (recommended)');
   console.log('  pnpm install');
   console.log('  pnpm dev');
+  console.log('  ');
+  console.log('  # or with npm');
+  console.log('  npm install');
+  console.log('  npm run dev');
   console.log('');
 }
 
