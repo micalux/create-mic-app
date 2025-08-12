@@ -2,7 +2,7 @@
   "name": "create-mic-app",
   "version": "1.0.0",
   "description": "CLI to scaffold a Next.js standard stack app (Next, Tailwind, shadcn/ui, Firebase Auth, Drizzle, Zod).",
-  "private": true,
+  "private": false,
   "bin": {
     "create-mic-app": "./bin/cli.js"
   },
