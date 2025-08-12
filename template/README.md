@@ -1,4 +1,4 @@
-# create-mic-app
+# create-mic-app (template)
 
 Standard Next.js stack boilerplate per `SPECS.md`.
 

@@ -1,0 +1,11 @@
+# Rely on "files" in package.json; this is a safeguard
+node_modules
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+coverage
+.DS_Store
+.next
+assets
+.github
+scripts

@@ -28,7 +28,7 @@ node ./bin/cli.js my-app
 See `template/README.md` for full details (env vars, scripts, structure).
 
 ## Publish notes
-- Remove `private: true` and run `npm publish` to publish the CLI as `create-mic-app`.
+- Remove `private: true` and run `npm publish --access public` to publish the CLI as `create-mic-app`.
 - Ensure package.json has:
   - `"bin": { "create-mic-app": "./bin/cli.js" }`
   - `"files": ["bin", "template"]`
