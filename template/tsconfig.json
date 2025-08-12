@@ -13,12 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "types": ["node", "vitest"],
-    "baseUrl": ".",
-    "paths": {
-      "@/db/*": ["src/db/*"],
-      "@/lib/*": ["src/lib/*"],
-      "@/components/*": ["components/*"]
-    }
+    "baseUrl": "."
+  },
+  "paths": {
+    "@/db/*": ["src/db/*"],
+    "@/lib/*": ["src/lib/*"],
+    "@/components/*": ["components/*"]
   },
   "include": [
     "next-env.d.ts",

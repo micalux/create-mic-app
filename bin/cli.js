@@ -59,15 +59,19 @@ async function fixTsconfigPaths(targetDir) {
     const ts = JSON.parse(await fs.readFile(tsconfigPath, 'utf-8'));
     ts.compilerOptions = ts.compilerOptions || {};
     ts.compilerOptions.baseUrl = ts.compilerOptions.baseUrl || '.';
-    ts.compilerOptions.paths = ts.compilerOptions.paths || {};
-    const paths = ts.compilerOptions.paths;
-    // Ensure components alias points to the correct folder at project root
-    if (paths['@/components/*'] && Array.isArray(paths['@/components/*'])) {
-      paths['@/components/*'] = ['components/*'];
-    } else {
-      paths['@/components/*'] = ['components/*'];
-    }
-    // Preserve other aliases if present
+    // Next.js sometimes moves paths under root; we set both safe locations.
+    const ensurePaths = (obj) => {
+      obj.paths = obj.paths || {};
+      obj.paths['@/components/*'] = ['components/*'];
+      obj.paths['@/lib/*'] = obj.paths['@/lib/*'] || ['src/lib/*'];
+      obj.paths['@/db/*'] = obj.paths['@/db/*'] || ['src/db/*'];
+    };
+    ensurePaths(ts.compilerOptions);
+    if (!ts.paths) ts.paths = {};
+    ts.paths['@/components/*'] = ['components/*'];
+    ts.paths['@/lib/*'] = ts.paths['@/lib/*'] || ['src/lib/*'];
+    ts.paths['@/db/*'] = ts.paths['@/db/*'] || ['src/db/*'];
+
     await fs.writeFile(tsconfigPath, JSON.stringify(ts, null, 2));
   } catch {
     // no-op on parse error
