@@ -5,8 +5,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { Rocket } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
 
 const schema = z.object({
   email: z.string().email(),

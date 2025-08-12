@@ -62,13 +62,13 @@ async function fixTsconfigPaths(targetDir) {
     // Next.js sometimes moves paths under root; we set both safe locations.
     const ensurePaths = (obj) => {
       obj.paths = obj.paths || {};
-      obj.paths['@/components/*'] = ['components/*'];
+      obj.paths['@/components/*'] = ['components/*', 'src/components/*'];
       obj.paths['@/lib/*'] = obj.paths['@/lib/*'] || ['src/lib/*'];
       obj.paths['@/db/*'] = obj.paths['@/db/*'] || ['src/db/*'];
     };
     ensurePaths(ts.compilerOptions);
     if (!ts.paths) ts.paths = {};
-    ts.paths['@/components/*'] = ['components/*'];
+    ts.paths['@/components/*'] = ['components/*', 'src/components/*'];
     ts.paths['@/lib/*'] = ts.paths['@/lib/*'] || ['src/lib/*'];
     ts.paths['@/db/*'] = ts.paths['@/db/*'] || ['src/db/*'];
 

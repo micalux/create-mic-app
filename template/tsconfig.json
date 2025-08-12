@@ -18,7 +18,7 @@
   "paths": {
     "@/db/*": ["src/db/*"],
     "@/lib/*": ["src/lib/*"],
-    "@/components/*": ["components/*"]
+    "@/components/*": ["components/*", "src/components/*"]
   },
   "include": [
     "next-env.d.ts",
