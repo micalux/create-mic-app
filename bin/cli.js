@@ -10,16 +10,20 @@ const program = new Command();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const TEMPLATE_ROOT = path.resolve(__dirname, '..');
+const TEMPLATE_ROOT = path.resolve(__dirname, '..', 'template');
 
 async function copyTemplate(targetDir) {
   const exclude = new Set([
     'node_modules',
     '.git',
+    '.github',
     '.next',
     'coverage',
     'dist',
     'pnpm-lock.yaml',
+    'docs',
+    'SPECS.md',
+    'assets',
   ]);
 
   await fs.ensureDir(targetDir);

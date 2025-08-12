@@ -37,7 +37,18 @@ Standard Next.js stack boilerplate per `SPECS.md`.
 Use the CLI to scaffold a new project from this template (similar to `create-volo-app` but with this stack):
 
 ```bash
+# If published to npm (preferred)
 npx create-mic-app my-app
+
+# If not yet published, install from GitHub and run the bin explicitly via npx
+npx -y -p git+https://github.com/micalux/create-mic-app.git#chore/upgrade-standard-stack create-mic-app my-app
+
+# Or with pnpm dlx
+pnpm dlx -p git+https://github.com/micalux/create-mic-app.git#chore/upgrade-standard-stack create-mic-app my-app
+
+# Or locally from a cloned repo
+node ./bin/cli.js my-app
+
 cd my-app
 pnpm install
 pnpm dev
