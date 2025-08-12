@@ -71,9 +71,9 @@ Options (parity-oriented):
 - (optional) `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
 ## Development
-1. Install dependencies with pnpm
+1. Install dependencies with pnpm (recommended) or npm
 2. Ensure env vars are set (do not commit `.env*`)
-3. `pnpm dev`
+3. `pnpm dev` or `npm run dev`
 
 ## Testing
 - `pnpm typecheck && pnpm lint && pnpm test`

@@ -17,7 +17,7 @@
     "paths": {
       "@/db/*": ["src/db/*"],
       "@/lib/*": ["src/lib/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["components/*"]
     }
   },
   "include": [
